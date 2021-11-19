@@ -60,8 +60,16 @@ app.put('/api/put/', (req, res) => {
   res.send("PUT Request Called")
 })
 
+const quotes =[];
+app.post(`/api/quotes`, (req, res)=>{
 
 
+quotes.push(req.body.newQuote)
+ quotes.reverse();
+  res.status(200).send(quotes)
+  
+
+})
 
 
 

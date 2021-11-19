@@ -10,7 +10,10 @@
     <input class="favorite-movies" id="movies" type="button" value="favorites movies">
     <button id="favorites-car">favorites-car</button>
     <button id="favorites-animal">favorites-animal</button>
-
+    <form>
+      <input id='quote-input' type='text' placeholder='enter inspirational quote!' />
+      <button>submit</button>
+    </form>
     <script>
       document.getElementById("favorites-car").onclick = function () {
         axios.get("http://localhost:4000/api/favorites-car/")
@@ -67,6 +70,41 @@
           alert(data);
         });
   };
+  document.querySelector('form').addEventListener('submit', (evt) => {
+        evt.preventDefault();
+
+        const theInput = document.querySelector('#quote-input')
+
+        const body = {
+          newQuote: theInput.value
+        }
+
+        axios
+  .post(`http://localhost:4000/api/quotes`, body)
+  .then(res => {
+            theInput.value = ''
+
+            const listSection = document.querySelector('ul');
+            listSection.innerHTML = '';
+
+            for(let i = 0; i < res.data.length; i++) {
+              const newLi = document.createElement('li')
+
+              newLi.textContent = res.data[i]
+
+              listSection.appendChild(newLi)
+            }
+
+          })
+          .catch(err => console.log(err));
+
+
+        theInput.focus();
+      })
+
+
+
+
 </script> 
 
 <script>
