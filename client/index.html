@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Back End Assessment</title>
+  </head>
+  <body class="container">
+    <form>
+    <button id="complimentButton">Get a compliment</button>
+    <button id="fortunesButton">Get a fortunes</button>
+    <input class="favorite-movies" id="movies" type="button" value="favorites movies">
+    <button id="favorites-car">favorites-car</button>
+    <button id="favorites-animal">favorites-animal</button>
+
+    <script>
+      document.getElementById("favorites-car").onclick = function () {
+        axios.get("http://localhost:4000/api/favorites-car/")
+            .then(function (response) {
+              const data = response.data;
+              alert(data);
+            });
+      };
+    </script> 
+
+
+<script>
+  document.getElementById("favorites-animal").onclick = function () {
+    axios.post("http://localhost:4000/api/favorites-animal/")
+        .then(function (response) {
+          const data = response.data;
+          alert(data);
+        });
+  };
+</script> 
+
+
+
+  
+    <script>
+      document.getElementById("fortunesButton").onclick = function () {
+        axios.get("http://localhost:4000/api/query-test")
+            .then(function (response) {
+              const data = response.data;
+              alert(data);
+            });
+      };
+    </script> 
+
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+    <script>
+      document.getElementById("complimentButton").onclick = function () {
+        axios.get("http://localhost:4000/api/compliment/")
+            .then(function (response) {
+              const data = response.data;
+              alert(data);
+            });
+      };
+    </script> 
+
+
+<script>
+  document.getElementById("fortunesButton").onclick = function () {
+    axios.get("http://localhost:4000/api/fortunes/")
+        .then(function (response) {
+          const data = response.data;
+          alert(data);
+        });
+  };
+</script> 
+
+<script>
+  document.getElementById("movies").onclick = function () {
+    axios.post("http://localhost:4000/api/movies/")
+        .then(function (response) {
+          const data = response.data;
+          alert(data);
+        });
+  };
+</script> 
+
+<button id="delete">delete</button>
+<script>
+  document.getElementById("delete").onclick = function () {
+    axios.delete("http://localhost:4000/api/delete/")
+        .then(function (response) {
+          const data = response.data;
+          alert(data);
+        });
+  };
+</script> 
+
+
+<button id="put">put btn</button>
+<script>
+  document.getElementById("put").onclick = function () {
+    axios.put("http://localhost:4000/api/put/")
+        .then(function (response) {
+          const data = response.data;
+          alert(data);
+        });
+  };
+</script> 
+<br>
+
+
+  </body>
+</html>
